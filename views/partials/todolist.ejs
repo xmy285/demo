@@ -1,5 +1,6 @@
 <ul>
-    <% todo.forEach(function(item,index) { %>
+    <% var list = type === "active" ? todo.filter(item => !item.completed) : type === "completed" ? todo.filter(item => !!item.completed) : todo %>
+    <% list.forEach(function(item,index) { %>
         <li class="todoItem">
             <form method="post" action="/changeComplete" id="completeForm<%= index %>" style="display: inline-block;">
                 <input type="hidden" name="index" value="<%= index %>">
