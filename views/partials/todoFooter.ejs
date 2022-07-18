@@ -1,0 +1,23 @@
+<footer class="footer" style="display: <%= todo.length > 0 ? "block":"none" %>;">
+    <span class="todo-count">
+        <strong><%= todo.filter(item => !item.completed).length %></strong> item left
+    </span>
+    <ul class="filters">
+        <li>
+            <a class="selected" href="/">All</a>
+        </li>
+        <li>
+            <a href="/active">Active</a>
+        </li>
+        <li>
+            <a href="/completed">Completed</a>
+        </li>
+    </ul>
+    <form name="clearForm" action="/clearCompleted" id="clearForm" method="post">
+        <button
+            class="clear-completed"
+            type="submit"
+            style="display: <%= todo.filter(item => !!item.completed).length > 0 ? "inline-block":"none" %>;"
+        >Clear completed</button>
+    </form>
+</footer>

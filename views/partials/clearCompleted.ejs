@@ -1,7 +1,0 @@
-<form name="clearForm" action="/clearCompleted" id="clearForm" method="post">
-    <button
-        class="clear-completed"
-        type="submit"
-        style="display: <%= todo.filter(item => !!item.completed).length > 0 ? "inline-block":"none" %>;"
-    >Clear completed</button>
-</form>
