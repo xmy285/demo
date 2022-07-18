@@ -22,7 +22,10 @@ app.get('/completed', function(req, res) {
 });
 
 app.post('/add', function(req, res, next){
-    todo.push({name:req.body.todoItem,completed:false})
+    const name = req.body.todoItem.trim();
+    if(!!name){
+        todo.push({name:name,completed:false})
+    }
     res.redirect(req.headers.referer)
 })
 
@@ -33,7 +36,12 @@ app.post('/changeComplete', function(req, res, next){
 })
 
 app.post('/changeName', function(req, res, next){
-    todo[parseInt(req.body.index)].name=req.body.newName
+    const newName = req.body.newName.trim();
+    if(!!newName){
+        todo[parseInt(req.body.index)].name=newName
+    } else {
+        todo.splice(parseInt(req.body.index),1)
+    }
     res.redirect(req.headers.referer)
 })
 
