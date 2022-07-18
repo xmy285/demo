@@ -1,18 +1,18 @@
 <ul>
     <% var list = type === "active" ? todo.filter(item => !item.completed) : type === "completed" ? todo.filter(item => !!item.completed) : todo %>
-    <% list.forEach(function(item,index) { %>
+    <% list.forEach(function(item) { %>
         <li class="todoItem">
-            <form method="post" action="/changeComplete" id="completeForm<%= index %>" style="display: inline-block;">
-                <input type="hidden" name="index" value="<%= index %>">
-                <input type="checkbox" <%= item.completed==true?"checked":"" %> name="completed" onclick="onChangeItemComplete(<%= index %>)">
+            <form method="post" action="/changeComplete" id="completeForm<%= item.id %>" style="display: inline-block;">
+                <input type="hidden" name="id" value="<%= item.id %>">
+                <input type="checkbox" <%= item.completed==true?"checked":"" %> name="completed" onclick='onChangeItemComplete("<%= item.id %>")'>
             </form>
-            <div id="nameLabel<%= index %>" ondblclick="onChangeItemName(<%= index %>)" style="display: inline-block; <%= item.completed?"text-decoration: line-through":""%>"><%= item.name %></div>
-            <form method="post" action="/changeName" id="nameForm<%= index %>" style="display: none;">
-                <input type="hidden" name="index" value="<%= index %>">
-                <input type="text" name="newName" value="<%= item.name %>" id="nameInput<%= index %>" onkeydown='addKey("<%= item.name %>",<%= index %>)'>
+            <div id="nameLabel<%= item.id %>" ondblclick='onChangeItemName("<%= item.id %>")' style="display: inline-block; <%= item.completed?"text-decoration: line-through":""%>"><%= item.name %></div>
+            <form method="post" action="/changeName" id="nameForm<%= item.id %>" style="display: none;">
+                <input type="hidden" name="id" value="<%= item.id %>">
+                <input type="text" name="newName" value="<%= item.name %>" id="nameInput<%= item.id %>" onkeydown='addKey("<%= item.id %>","<%= item.name %>")'>
             </form>
-            <form method="post" action="/deleteTodo" id="deleteForm<%= index %>" class="delete">
-                <input type="hidden" name="index" value="<%= index %>">
+            <form method="post" action="/deleteTodo" id="deleteForm<%= item.id %>" class="delete">
+                <input type="hidden" name="id" value="<%= item.id %>">
                 <button type="submit">×</button>
             </form>
         </li>

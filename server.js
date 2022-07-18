@@ -24,29 +24,33 @@ app.get('/completed', function(req, res) {
 app.post('/add', function(req, res, next){
     const name = req.body.todoItem.trim();
     if(!!name){
-        todo.push({name:name,completed:false})
+        const id = Date.now().toString(36) + Math.random().toString(36).substring(2) 
+        todo.push({name:name,completed:false,id:id})
     }
     res.redirect(req.headers.referer)
 })
 
 app.post('/changeComplete', function(req, res, next){
     const item = req.body
-    todo[parseInt(item.index)].completed=item.completed==='on'?true:false
+    const index = todo.findIndex(t => t.id === item.id)
+    todo[index].completed=item.completed==='on'?true:false
     res.redirect(req.headers.referer)
 })
 
 app.post('/changeName', function(req, res, next){
     const newName = req.body.newName.trim();
+    const index = todo.findIndex(t => t.id === req.body.id)
     if(!!newName){
-        todo[parseInt(req.body.index)].name=newName
+        todo[index].name=newName
     } else {
-        todo.splice(parseInt(req.body.index),1)
+        todo.splice(index,1)
     }
     res.redirect(req.headers.referer)
 })
 
 app.post('/deleteTodo', function(req, res, next){
-    todo.splice(parseInt(req.body.index),1)
+    const index = todo.findIndex(t => t.id === req.body.id)
+    todo.splice(index,1)
     res.redirect(req.headers.referer)
 })
 
@@ -70,3 +74,4 @@ app.use(express.static(path.join(__dirname,'/')))
 
 app.listen(8080);
 console.log('Server is listening on port 8080');
+console.log('Please open http://localhost:8080/')

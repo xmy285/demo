@@ -1,6 +1,5 @@
-function onChangeItemComplete(index){
-    const id = "completeForm"+index
-    const todoItem = document.getElementById(id)
+function onChangeItemComplete(id){
+    const todoItem = document.getElementById("completeForm"+id)
     todoItem.submit()
 }
 
@@ -9,15 +8,15 @@ function onChangeToggleAll(){
     toggleAll.submit()
 }
 
-function onChangeItemName(index){
-    document.getElementById("nameLabel" + index).style.display="none"
-    document.getElementById("nameForm" + index).style.display="inline-block"
+function onChangeItemName(id){
+    document.getElementById("nameLabel" + id).style.display="none"
+    document.getElementById("nameForm" + id).style.display="inline-block"
 }
 
-function addKey(name, index){
+function addKey(id,name){
     if(window.event.key === 'Escape' || window.event.code === "Escape" || window.event.keyCode === 27){
-        document.getElementById("nameLabel" + index).style.display="inline-block"
-        document.getElementById("nameInput" + index).value=name
-        document.getElementById("nameForm" + index).style.display="none"
+        document.getElementById("nameLabel" + id).style.display="inline-block"
+        document.getElementById("nameInput" + id).value=name
+        document.getElementById("nameForm" + id).style.display="none"
     }
 }
