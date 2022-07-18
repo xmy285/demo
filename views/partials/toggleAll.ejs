@@ -1,0 +1,10 @@
+<form name="toggleAll" method="post" action="/toggleAll" id="toggleAllForm">
+    <input
+        id="toggle-all"
+        class="toggle-all"
+        type="checkbox"
+        name="isToggle"
+        <%= todo.filter(item=>item.completed===false).length >0 ? "":"checked" %>
+        onclick="onChangeToggleAll()">
+	<label for="toggle-all">Mark all as complete</label>
+</form>

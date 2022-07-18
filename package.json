@@ -1,6 +1,28 @@
 {
-  "private": true,
+  "name": "todomvc-task",
+  "version": "1.0.0",
+  "description": "> Template used for creating [TodoMVC](http://todomvc.com) apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xmy285/todoMVC-task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xmy285/todoMVC-task/issues"
+  },
+  "homepage": "https://github.com/xmy285/todoMVC-task#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "path": "^0.12.7",
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.0"
   }

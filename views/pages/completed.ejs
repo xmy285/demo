@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Template • TodoMVC</title>
+		<link rel="stylesheet" type="text/css" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" type="text/css" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+        <base herf='/'>
+	</head>
+	<body>
+		<section class="todoapp">
+			<header class="header">
+				<h1>todos</h1>
+                <%- include('../partials/addTodo'); %>
+			</header>
+			<section class="main" style="display: <%= todo.length > 0 ? "block":"none" %>;">
+                <%- include('../partials/toggleAll'); %>
+                <%- include('../partials/todoList/completedTodos'); %>
+			</section>
+			<footer class="footer" style="display: <%= todo.length > 0 ? "block":"none" %>;">
+				<span class="todo-count">
+                    <strong><%= todo.filter(item=>item.completed === false).length %></strong> item left
+                </span>
+				<ul class="filters">
+					<li>
+						<a href="/">All</a>
+					</li>
+					<li>
+						<a href="/active">Active</a>
+					</li>
+					<li>
+						<a class="selected" href="/completed">Completed</a>
+					</li>
+				</ul>
+                <%- include('../partials/clearCompleted') %>
+			</footer>
+		</section>
+		<footer class="info">
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+        <script type="text/javascript" src="/js/app.js"></script>
+	</body>
+</html>
