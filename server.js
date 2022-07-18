@@ -14,7 +14,6 @@ app.get('/', function(req, res) {
 });
 
 app.get('/active', function(req, res) {
-    console.log('active')
   res.render('pages/index',{todo: todo, type: 'active'});
 });
 
