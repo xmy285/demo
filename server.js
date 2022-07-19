@@ -63,10 +63,7 @@ app.post('/toggleAll', function(req, res, next){
 })
 
 app.post('/clearCompleted', function(req, res, next){
-    const activeItems = todo.filter(function(item){
-        return !item.completed
-    })
-    todo=activeItems
+    todo = todo.filter(item => !item.completed)
     res.redirect(req.headers.referer)
 })
 

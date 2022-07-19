@@ -1,11 +1,9 @@
 function onChangeItemComplete(id){
-    const todoItem = document.getElementById("completeForm"+id)
-    todoItem.submit()
+    document.getElementById("completeForm"+id).submit();
 }
 
 function onChangeToggleAll(){
-    const toggleAll = document.getElementById("toggleAllForm")
-    toggleAll.submit()
+    document.getElementById("toggleAllForm").submit();
 }
 
 function onChangeItemName(id){
